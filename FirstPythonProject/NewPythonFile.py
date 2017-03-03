@@ -3,6 +3,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 
+locators = {
+    'entry_for_start_location': "//*[@id='container']/div/div/section/div/div[1]/section[1]/div/ul/li[1]/label/div/input"
+}
+
 class regressionclass(unittest.TestCase):
 
     def setUp(self):
@@ -11,11 +15,11 @@ class regressionclass(unittest.TestCase):
     def test_thameslink_buy_ticket(self):
 
         driver = self.driver
-        driver.maximize_window()
+
         driver.get('https://thameslink.stage.otrl.io/search')
 
         # <Step 1: In Tickets tab, Leaving From box, enter 'Welwyn Garden City'.>
-        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[1]/div/ul/li[1]/label/div/input").send_keys("Welwyn Garden City")
+        driver.find_element_by_xpath(locators['entry_for_start_location']).send_keys("Welwyn Garden City")
         time.sleep(5)
         # <Result 1: 'Welwyn Garden City' is seen in the Leaving From box.>
 
@@ -24,7 +28,7 @@ class regressionclass(unittest.TestCase):
         elem.send_keys("London Kings Cross")
         elem.send_keys(Keys.RETURN)
         print("run ok")
-        #time.sleep(3)
+        time.sleep(5)
         # <Result 2: 'London Kings Cross' is seen in the Going To box.>
 
         # <Step 3: In Tickets tab, click on the Outbound Calendar.>
@@ -80,6 +84,12 @@ class regressionclass(unittest.TestCase):
         # <Result 12: '1st Class Mail' option is selected in the list of collection preferences.>
 
         # <Step 13: Click into the 'First name' field in 'Collection preferences'.>
+        driver.find_element_by_xpath("//*[@id='contactName']").click()
+        time.sleep(5)
+        # <Result 13: The curser is placed in the 'First name' field.>
+
+
+        # <Step 14: Click into the 'First name' field in 'Collection preferences'.>
         driver.find_element_by_xpath("//*[@id='contactName']").click()
         time.sleep(5)
         # <Result 13: The curser is placed in the 'First name' field.>
