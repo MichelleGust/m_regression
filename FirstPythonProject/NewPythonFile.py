@@ -24,11 +24,19 @@ class regressionclass(unittest.TestCase):
         # <Result 1: 'Welwyn Garden City' is seen in the Leaving From box.>
 
         # <Step 2: In Tickets tab, Going To box, enter 'London Kings Cross'.>
+        #driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[1]/div/ul/li[3]/label/div/input").send_keys("London Kings")
+        #time.sleep(4)
+        #driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div/section[1]/div/ul/li[3]/label/div/input").click()
+        #print("run ok")
+        #time.sleep(4)
+        # <Result 2: 'London Kings Cross' is seen in the Going To box.>
+
+        # <Step 2: In Tickets tab, Going To box, enter 'London Kings Cross'.>
         driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[1]/div/ul/li[3]/label/div/input").send_keys("London Kings")
-        time.sleep(4)
-        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div/section[1]/div/ul/li[3]/label/div/input").click()
-        print("run ok")
-        time.sleep(4)
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[1]/div/ul/li[3]/label/div/div/div").click()
+        //*[@id="container"]/div/div/section/div/div[1]/section[1]/div/ul/li[3]/label/div/div
+        time.sleep(2)
         # <Result 2: 'London Kings Cross' is seen in the Going To box.>
 
         # <Step 3: In Tickets tab, click on the Outbound Calendar.>
